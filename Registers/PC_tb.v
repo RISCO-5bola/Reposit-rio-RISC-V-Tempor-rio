@@ -1,10 +1,10 @@
 `timescale 1ns / 100 ps
 module testbench();
     reg enable_tb, reset_tb, clk_tb;
-    reg [31:0] datain_tb;
-    wire [31:0] dataout_tb;
-    parameter sete = 32'b00000000000000000000000000000111,
-             oito = 32'b00000000000000000000000000001000;
+    reg [63:0] datain_tb;
+    wire [63:0] dataout_tb;
+    parameter sete = 64'd7,
+             oito = 64'd8;
 	integer i = 0;
     PC uut (.datain(datain_tb), .dataout(dataout_tb), .enable(enable_tb), .reset(reset_tb), .clk(clk_tb));
 	
@@ -148,6 +148,6 @@ module testbench();
             $display("TESTE %b INCORRETO\nreset = %b\nenable = %b\n->entrada = %b; saida = %b\n", i, reset_tb, enable_tb, datain_tb, dataout_tb);
             $display("\n");
         end
-        $stop; 
+        $finish;
     end
 endmodule   
